@@ -24,3 +24,5 @@ script:
   - bundle exec rspec
 before_install:
   - export TZ=US/Mountain
+addons:
+  postgresql: "9.4"
