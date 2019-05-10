@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_211531) do
   create_table "users", force: :cascade do |t|
     t.string "phone_number"
     t.string "confirmation_number"
-    t.string "confirmation_expiration"
+    t.datetime "confirmation_expiration"
     t.boolean "confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

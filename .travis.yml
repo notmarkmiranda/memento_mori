@@ -5,24 +5,24 @@ env:
   matrix:
   - DB=postgresql
 before_script:
-  - cp config/database.travis.yml config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+- cp config/database.travis.yml config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- RAILS_ENV=test bundle exec rake db:create db:migrate --trace
 cache:
   bundler: true
   directories:
-    - node_modules
+  - node_modules
   yarn: true
 install:
-  - bundle install
-  - nvm install node
-  - node -v
-  - npm i -g yarn
-  - yarn
+- bundle install
+- nvm install node
+- node -v
+- npm i -g yarn
+- yarn
 script:
-  - bundle exec rails webpacker:compile
-  - bundle exec rspec
+- bundle exec rails webpacker:compile
+- bundle exec rspec
 before_install:
-  - export TZ=US/Mountain
+- export TZ=US/Mountain
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
