@@ -4,25 +4,28 @@ rvm:
 env:
   matrix:
   - DB=postgresql
+  - secure: To4TibXrdj0GElWqHbJ1u39XfWmHLejA4uEbDSBtwi6VfSjxAkPUCgfW85Ngow8l0Fid1FGU8B+OCqegH6WFg/+t5I4QKLFHNQhBYU0NHVyOtpCjqMIapS1AQMKXDNmWbXOakG25xWdg+9ukYAE3RK1lRuMUtM8O9/UsC03swZdN2maMHygxqWE2d5hloIjLLD6fTBWB6nruioqN+et6mWEUkYen78mqj+7Ts1bDAVap0QhJFpl5b5lxKRbGUQR6mm059RyKIhA3BO8fJPC2PPpk0DFb+Xf7Sns8lRt9QvAumH9VkRhCwBuTq9JGWlXC17Nq9MuCz5DS+OQjeNgjX0LNkQ/hdLeML1gKd/3QIZLti7XZaEoPAjfZH9DtAwYfypTBSDZqo8CGz9+u15BP+HfjXGG+q/I2yo2ZxCBil2KyQJ1Fa6Ty1FVlXhboyHL4hh0CQf7Tduym/Tlvs866S/x3nmR3uIEZ0MoMNOMPbgP5XcQbJ2LxnzM/sb8rUU7TO9oMmGeOvr/7WEQ1hTntuwQDc5Z0I+87P+3PWKYpSn5nxGoGLy/06Kx+KxJ31jQ8KYOL5Ybg5fvNV/CHP/+DwT6huRnDr28o4urKZWzMTyXl9P0IppA9TDy2NdE7mqjfWy4vtf19wZKClP4jCkx3nCR2SeqcT2jxXuq1+abkx+A=
+  - secure: RCzMg5uBtxuJ6tdLmm195AyxD9rQH/7wb85G2EMqEJlkFyZVy2CzY8iOeAsTNtcQh50Dlv9sIFnZ0fGpuI0DBKSyL6SJmEicDPm8PzqTopVBIjUYfbbixyeBHkIINIlqXCm9nHirWaWFgiybXBuFPUxaEIOnwxRcSRdjTlUjPvBPelQeXR2VfpbBajqD82PVLnIUIHusu11nIoYgGFHIW+Iz3mQyiogTPj/7IrRv/Q5F7QIowiAjeUuD3ithYBIwrTCy1blLIV72UfI0qwSEV2COCClSd391K2X4CjU42r5MjWd61mn/7iTA2OoIXC08fhvRGdNs6dEhQxIkidoLAUWtYMPGVHmp+Z0c6xROObPkQFv9GMTCenCmSVpZT/O+XlUb2jSYt4NdH7Xfhc/andGrWZjDvXKt/79GKCDxR+tiOOnWg+96XiRFLrLp/ImP9l15UaooRlzu5oANWdonoRJi6oZVUHtFZEl5g7qOHPkRHy6f1qUxV62pexb/7Ixr2fZxlni8ySiPwLATCJeX1Rvmo5+ZbFLweakZ5tYLr08ld7mdZ1tDOmpJ/SJPtWwdHq2G6Mq7IJu59Lk+Bhs0Zo/VZEDiZkiOOptNylQxbSPBkwyRBmS7NEnthV1dfnyVq6DOfyNuNG9awlG3BdoLueepO0ZKlGfv20HM4v/mRO4=
+  - secure: Jx+Wtb3KgEA1liv98hAh6BjAnIVzFpmAnfRyVSYZQnmhC+O2SdmwBnmLtVqANrjgP+PBDoVwlt+mOETSPSotGJIi9j+A9cBGyierlGLbOQAgc0TkuIsJRLpVVH6GyJl0Xwxs26F9/aKMVOqIHkkkWmtB7VBNzbWEcieU9NJHAtaNDwDhUVVHpPu2bZa4injq0MZ5QJRdG9dONYunvjdaPcNRLq53Hdna88Sw18mQM+vwFUicwLPNgrlGZGDun/bydtpwRKqH61uBPYa62PZt+8Ur+uCdeAvnsqZEPnzvU3XamL9pmZLqOF8PyW4EX0nIIQ6zEHYXQWgctUN/NgZaUyfQpKMtzjccbpxamXsobKMI7b+ja5waq21IOQY7qQI+Akbig+A5f16Pe7Qmgg/y1gLkLSgtnns7n1Qfp7hfePfsqg+HeHNWGYCTAkLsyPyG3+YVkXnWIo0JIeOMfWX9TaxSRUu721rtHdrTLcrzb3f3L2e0QhqkT9MrN0CJ8zZAIS5EUquHMMzhznDsuu7z46u9Iu8pWSRMjcUs70YGnQerE+dCvnclJ82uIMNDYwWCSq6dbzAxGhXGSmBUyeexAQDMAnaQGVWyJAUmr4QbRoq3fI71o37f2HdBhM66UqlfBJ3+aQ9JC/u1OAfRigIP5zmgbMo2GCBZ7Xg29S3OOAM=
 before_script:
-  - cp config/database.travis.yml config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+- cp config/database.travis.yml config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- RAILS_ENV=test bundle exec rake db:create db:migrate --trace
 cache:
   bundler: true
   directories:
-    - node_modules
+  - node_modules
   yarn: true
 install:
-  - bundle install
-  - nvm install node
-  - node -v
-  - npm i -g yarn
-  - yarn
+- bundle install
+- nvm install node
+- node -v
+- npm i -g yarn
+- yarn
 script:
-  - bundle exec rails webpacker:compile
-  - bundle exec rspec
+- bundle exec rails webpacker:compile
+- bundle exec rspec
 before_install:
-  - export TZ=US/Mountain
+- export TZ=US/Mountain
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
