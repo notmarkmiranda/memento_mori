@@ -8,18 +8,27 @@ describe TwilioService, type: :service do
     let(:client) { double('twilio_client') }
     let(:messages) { double('twilio_messages') }
     let(:from) { '+15005550006' }
+    let(:create_args) do
+      {
+        from: from,
+        to: user.phone_number,
+        body: "Your confirmation number is #{user.confirmation_number}."
+      }
+    end
+    let(:response) { double('response') }
 
     before do
+      allow_any_instance_of(TwilioService).to receive(:client).and_return(client)
       allow(client).to receive(:messages).and_return(messages)
-      allow(messages).to receive(:create).with(from: from, to: user.phone_number, body: "Your confirmation number is #{user.confirmation_number}.")
+      allow(messages).to receive(:create)
+        .with(create_args)
+        .and_return(double)
     end
 
     it 'should return a message object' do
-      response = subject
-      
-      expect(response.api_version).to eq('2010-04-01')
-      expect(response.direction).to eq('outbound-api')
-      expect(response.to).to eq("+1#{user.phone_number}")
+      subject
+
+      expect(messages).to have_received(:create).with(create_args).once
     end
   end
 end
