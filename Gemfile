@@ -11,9 +11,11 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'factory_bot_rails'
+  gem 'figaro'
   gem 'pry'
   gem 'rspec-rails', '~> 3.8'
 end
@@ -28,6 +30,7 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'launchy'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
 end
