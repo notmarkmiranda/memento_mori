@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def random_six_digit_string
-    '%06d' % rand(10 ** 6)
+    "%06d" % rand(10**6)
   end
 
   def set_confirmation_number_and_expiration
